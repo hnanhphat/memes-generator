@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  color: #000;
+  width: 100%;
+  height: 100%;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: 0;
+  line-height: 1.7;
+  word-break: break-word;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a {
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+a:link, a:visited {
+  color: currentColor;
+}
+a:active, a:hover {
+  opacity: 1;
 }
 
-.App-link {
-  color: #61dafb;
+ul {
+  list-style: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
+button:focus {
+  outline: none;
+}
+
+img {
+  height: auto;
+  vertical-align: middle;
+}
+
+input:focus {
+  outline: none;
+}
+
+.container {
+  width: calc(100% - 30px);
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=App.css.map */
