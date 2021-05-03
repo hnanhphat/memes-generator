@@ -9,7 +9,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 
 const PublicLayout = () => {
   return (
-    <div id="home">
+    <div id="main">
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/login" component={LoginPage} />

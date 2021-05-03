@@ -8,7 +8,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const selectedMeme = useSelector((state) => state.meme.selectedMeme);
   const loading = useSelector((state) => state.meme.loading);
-  console.log(selectedMeme);
 
   const handleImportImage = async (fileList) => {
     const files = inputFile.current.files;
@@ -29,57 +28,53 @@ const HomePage = () => {
 
   return (
     <div id="home" className="home">
-      <Sidebar />
+      {selectedMeme && selectedMeme.id ? <Sidebar /> : ""}
       {selectedMeme ? (
-        <div className="main-meme">
-          <img src={selectedMeme.localImageUrl} alt="Selected Meme" />
-          {selectedMeme.id ? (
-            <div style={{ marginTop: "5em" }}>
-              <button
-                className="btn-block"
-                onClick={handleCancel}
-                disabled={loading}
-              >
-                Cancel
-              </button>
-            </div>
-          ) : (
-            <div className="d-flex m-3">
-              {loading ? (
-                <button className="mr-3" type="button" disabled>
-                  <span
-                    className="spinner-border spinner-border-sm"
-                    role="status"
-                    aria-hidden="true"
-                  ></span>
-                  Submitting...
+        <div className="main-content main-content--selected">
+          <div className="container">
+            <img src={selectedMeme.localImageUrl} alt="Selected Meme" />
+            {selectedMeme.id ? (
+              ""
+            ) : (
+              <div className="btns">
+                <button onClick={handleCancel} disabled={loading}>
+                  Cancel
                 </button>
-              ) : (
-                <button className="mr-3" onClick={handleSubmitImage}>
-                  Take this image
-                </button>
-              )}
-              <button onClick={handleCancel} disabled={loading}>
-                Cancel
-              </button>
-            </div>
-          )}
+                {loading ? (
+                  <button className="mr-3" type="button" disabled>
+                    <span
+                      className="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Submitting...
+                  </button>
+                ) : (
+                  <button className="mr-3" onClick={handleSubmitImage}>
+                    Take this image
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       ) : (
-        <p>
-          Please select a meme in the gallery <br />{" "}
-          <label className="import-image-label" htmlFor="local-meme">
-            <input
-              type="file"
-              ref={inputFile}
-              className="import-image-label-input"
-              onChange={() => handleImportImage()}
-              accept="image/png, image/jpeg"
-              id="local-meme"
-            />
-            or <span className="import-image-label-text">upload an image</span>.
-          </label>
-        </p>
+        <div className="main-content main-content--default">
+          <p>
+            Please select a meme in the gallery <br /> or{" "}
+            <label className="import-image-label" htmlFor="local-meme">
+              <input
+                type="file"
+                ref={inputFile}
+                className="import-image-label-input"
+                onChange={() => handleImportImage()}
+                accept="image/png, image/jpeg"
+                id="local-meme"
+              />
+              <span>upload an image</span>.
+            </label>
+          </p>
+        </div>
       )}
     </div>
   );

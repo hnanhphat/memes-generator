@@ -1,0 +1,55 @@
+#home {
+  display: flex;
+  .main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    min-height: calc(100vh - 116px);
+    &--selected {
+      .container {
+        width: 60%;
+        img {
+          width: 100%;
+        }
+        .btns {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-top: 15px;
+          button {
+            border-radius: 5px;
+            width: calc(50% - 5px);
+            height: 38px;
+            &:nth-child(1) {
+              background: rgba($color: $orange, $alpha: 0.15);
+              color: $orange;
+            }
+            &:nth-child(2) {
+              background: $orange;
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+    &--default {
+      input {
+        visibility: hidden;
+        width: 0;
+        height: 0;
+        cursor: default;
+        opacity: 0;
+      }
+      p {
+        font-size: 18px;
+        span {
+          color: $orange;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

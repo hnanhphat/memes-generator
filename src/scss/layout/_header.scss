@@ -1,0 +1,42 @@
+.header {
+  border-bottom: 1px solid rgba($color: $orange, $alpha: 0.2);
+  color: $orange;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  &__left {
+    background: $white;
+    border-radius: 10px;
+    width: 68px;
+    img {
+      width: 100%;
+    }
+  }
+  &__right {
+    display: flex;
+    a {
+      display: flex;
+      align-items: center;
+      &:not(:first-child) {
+        margin-left: 20px;
+      }
+
+      svg {
+        width: 16px;
+        margin-right: 6px;
+        &.fa-plus-square {
+          width: 14px;
+        }
+        &.fa-images {
+          width: 16px;
+        }
+      }
+    }
+  }
+
+  &--scroll {
+    background: $black;
+    color: $white;
+  }
+}

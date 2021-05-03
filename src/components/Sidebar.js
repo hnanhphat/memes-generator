@@ -59,6 +59,10 @@ const Sidebar = () => {
     setTexts(temp);
   };
 
+  const handleCancel = () => {
+    dispatch(memeActions.setSelectedMeme(null));
+  };
+
   useEffect(() => {
     if (selectedMeme?.id) {
       if (selectedMeme?.texts?.length) {
@@ -74,12 +78,11 @@ const Sidebar = () => {
 
   return (
     <div id="sidebar" className="sidebar">
-      <h1>This is Sidebar</h1>
-      <form onSubmit={handleFormSubmit} className="sidebar__form">
+      <form onSubmit={handleFormSubmit}>
         {texts.map(
           ({ id, content, color, size, alignmentX, alignmentY }, index) => (
-            <div className="sidebar__container" key={id}>
-              <h3 className="sidebar__heading">TEXT {index + 1}</h3>
+            <div className="container" key={id}>
+              <p className="sidebar__heading">TEXT {index + 1}</p>
               <div className="sidebar__group">
                 <input
                   type="text"
@@ -95,7 +98,7 @@ const Sidebar = () => {
                 />
               </div>
               <div className="sidebar__group">
-                <div className="label">Color</div>
+                <p className="label">Color</p>
                 <div className="value">
                   <select
                     value={color}
@@ -109,14 +112,14 @@ const Sidebar = () => {
                   >
                     {COLORS.map((color) => (
                       <option value={color} key={color}>
-                        {color}
+                        {color[0] + color.slice(1).toLowerCase()}
                       </option>
                     ))}
                   </select>
                 </div>
               </div>
               <div className="sidebar__group">
-                <div className="label">Font Size</div>
+                <p className="label">Font Size</p>
                 <div className="value">
                   <select
                     value={size}
@@ -130,14 +133,14 @@ const Sidebar = () => {
                   >
                     {FONT_SIZES.map((size) => (
                       <option value={size} key={size}>
-                        {size}
+                        {size}px
                       </option>
                     ))}
                   </select>
                 </div>
               </div>
               <div className="sidebar__group">
-                <div className="label">Vertical Align</div>
+                <p className="label">Vertical Align</p>
                 <div className="value">
                   <select
                     value={alignmentX}
@@ -158,7 +161,7 @@ const Sidebar = () => {
                 </div>
               </div>
               <div className="sidebar__group">
-                <div className="label">Horizontal Align</div>
+                <p className="label">Horizontal Align</p>
                 <div className="value">
                   <select
                     value={alignmentY}
@@ -181,9 +184,17 @@ const Sidebar = () => {
             </div>
           )
         )}
-        <button type="submit" disabled={!selectedMeme?.id || loading}>
-          Submit
-        </button>
+        <div className="sidebar__btn">
+          <button
+            disabled={!selectedMeme?.id || loading}
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+          <button type="submit" disabled={!selectedMeme?.id || loading}>
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
