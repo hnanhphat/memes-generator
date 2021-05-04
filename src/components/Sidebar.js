@@ -63,6 +63,10 @@ const Sidebar = () => {
     dispatch(memeActions.setSelectedMeme(null));
   };
 
+  const handleFinish = (e) => {
+    dispatch(memeActions.setSelectedMeme(null));
+  };
+
   useEffect(() => {
     if (selectedMeme?.id) {
       if (selectedMeme?.texts?.length) {
@@ -184,7 +188,7 @@ const Sidebar = () => {
             </div>
           )
         )}
-        <div className="sidebar__btn">
+        <div className="btns container">
           <button
             disabled={!selectedMeme?.id || loading}
             onClick={handleCancel}
@@ -193,6 +197,13 @@ const Sidebar = () => {
           </button>
           <button type="submit" disabled={!selectedMeme?.id || loading}>
             Submit
+          </button>
+          <button
+            disabled={!selectedMeme?.id || loading}
+            onClick={handleFinish}
+            className="full"
+          >
+            Finish
           </button>
         </div>
       </form>

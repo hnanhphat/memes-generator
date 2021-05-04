@@ -71,3 +71,34 @@ input {
   max-width: 1024px;
   margin: 0 auto;
 }
+
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  button,
+  a {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(50% - 5px);
+    height: 38px;
+    font-size: 14px;
+    &:nth-child(1) {
+      background: rgba($color: $orange, $alpha: 0.15);
+      color: $orange;
+    }
+    &:nth-child(2) {
+      background: $orange;
+      color: $white;
+    }
+    &.full {
+      background: $orange;
+      color: $white;
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+}

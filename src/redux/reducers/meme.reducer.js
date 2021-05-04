@@ -5,14 +5,27 @@ const initialState = {
   totalPageNum: 1,
   loading: false,
   selectedMeme: null,
+  singleMeme: [],
 };
 
 const memeReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    // GET ALL MEMES
     case types.GET_MEMES_REQUEST:
+    case types.GET_SINGLE_MEME_REQUEST:
+    case types.CREATE_MEME_REQUEST:
+    case types.UPDATE_MEME_REQUEST:
+    case types.DELETE_MEME_REQUEST:
       return { ...state, loading: true };
+
+    case types.GET_MEMES_FAILURE:
+    case types.GET_SINGLE_MEME_FAILURE:
+    case types.CREATE_MEME_FAILURE:
+    case types.UPDATE_MEME_FAILURE:
+    case types.DELETE_MEME_FAILURE:
+      return { ...state, loading: false };
+
+    // GET ALL MEMES
     case types.GET_MEMES_SUCCESS:
       return {
         ...state,
@@ -20,13 +33,16 @@ const memeReducer = (state = initialState, action) => {
         totalPageNum: payload.totalPages,
         loading: false,
       };
-    case types.GET_MEMES_FAILURE:
-      return { ...state, loading: false };
 
-    // CREATE MEME
-    case types.CREATE_MEME_REQUEST:
-    case types.UPDATE_MEME_REQUEST:
-      return { ...state, loading: true };
+    // GET SINGLE MEME
+    case types.GET_SINGLE_MEME_SUCCESS:
+      return {
+        ...state,
+        singleMeme: payload,
+        loading: false,
+      };
+
+    // CREATE & UPDATE MEME
     case types.CREATE_MEME_SUCCESS:
     case types.UPDATE_MEME_SUCCESS:
       return {
@@ -38,10 +54,12 @@ const memeReducer = (state = initialState, action) => {
             payload.outputMemePath.split("public/")[1]
           }?${payload.updatedAt}`,
         },
+        singleMeme: payload,
         loading: false,
       };
-    case types.CREATE_MEME_FAILURE:
-    case types.UPDATE_MEME_FAILURE:
+
+    // DELETE MEME
+    case types.DELETE_MEME_SUCCESS:
       return { ...state, loading: false };
 
     // SELECTED MEME

@@ -17,8 +17,11 @@
 //LAYOUT
 @import "./layout/footer";
 @import "./layout/header";
+@import "./layout/memes";
 @import "./layout/sidebar";
 
 // PAGES
 @import "./pages/404";
+@import "./pages/gallery";
 @import "./pages/home";
+@import "./pages/single";

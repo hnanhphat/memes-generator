@@ -1,4 +1,5 @@
-#home {
+#home,
+#edit {
   display: flex;
   .main-content {
     display: flex;
@@ -8,29 +9,11 @@
     flex: 1;
     min-height: calc(100vh - 116px);
     &--selected {
+      padding: 30px;
       .container {
-        width: 60%;
+        width: 50%;
         img {
           width: 100%;
-        }
-        .btns {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-top: 15px;
-          button {
-            border-radius: 5px;
-            width: calc(50% - 5px);
-            height: 38px;
-            &:nth-child(1) {
-              background: rgba($color: $orange, $alpha: 0.15);
-              color: $orange;
-            }
-            &:nth-child(2) {
-              background: $orange;
-              color: $white;
-            }
-          }
         }
       }
     }

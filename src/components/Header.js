@@ -29,7 +29,7 @@ const Header = () => {
           </svg>
           Create Meme
         </Link>
-        <Link to="gallery">
+        <Link to="/gallery">
           <svg
             aria-hidden="true"
             focusable="false"

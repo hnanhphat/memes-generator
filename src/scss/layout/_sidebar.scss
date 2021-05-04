@@ -60,28 +60,10 @@
     }
 
     select {
+      cursor: pointer;
       text-align-last: right;
       &:focus {
         outline: none;
-      }
-    }
-  }
-  &__btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-    button {
-      border-radius: 5px;
-      width: calc(50% - 5px);
-      height: 38px;
-      &:nth-child(1) {
-        background: rgba($color: $orange, $alpha: 0.15);
-        color: $orange;
-      }
-      &:nth-child(2) {
-        background: $orange;
-        color: $white;
       }
     }
   }

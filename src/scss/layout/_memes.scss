@@ -1,0 +1,30 @@
+.memes-list {
+  padding: 30px;
+  ul {
+    -webkit-column-count: 3;
+    column-count: 3;
+    -webkit-column-gap: 15px;
+    -moz-column-gap: 15px;
+    grid-column-gap: 15px;
+    column-gap: 15px;
+    orphans: 1;
+    widows: 1;
+    li {
+      margin-bottom: 15px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .no-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 176px);
+    a {
+      color: $orange;
+      text-decoration: underline;
+    }
+  }
+}

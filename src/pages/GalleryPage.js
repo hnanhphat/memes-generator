@@ -11,7 +11,6 @@ const GalleryPage = () => {
   const memes = useSelector((state) => state.meme.memes);
   const totalPageNum = useSelector((state) => state.meme.totalPageNum);
   const loading = useSelector((state) => state.meme.loading);
-  console.log(memes);
 
   const showDetail = () => {};
 
@@ -21,18 +20,21 @@ const GalleryPage = () => {
 
   return (
     <div id="gallery" className="gallery">
-      <h1>This is Gallery Page</h1>
       {loading ? (
         <Loading />
       ) : (
         <MemeList memes={memes} showDetail={showDetail} />
       )}
-      <PaginationBar
-        pageNum={pageNum}
-        setPageNum={setPageNum}
-        totalPageNum={totalPageNum}
-        loading={loading}
-      />
+      {totalPageNum > 1 ? (
+        <PaginationBar
+          pageNum={pageNum}
+          setPageNum={setPageNum}
+          totalPageNum={totalPageNum}
+          loading={loading}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };
